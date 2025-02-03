@@ -1,0 +1,22 @@
+[package]
+name = "password-manager"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "pm_lib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "password-manager"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.0", features = ["derive"] }  # CLI parsing
+aes-gcm = "0.10"  # AES-256 encryption
+rand = "0.8"  # Random key generation
+base64 = "0.13"  # Encoding encrypted passwords
+lazy_static = "1.4"  # Global in-memory storage
+dotenvy = "0.15.7"
+log = "0.4.25"
+env_logger = "0.11.6"

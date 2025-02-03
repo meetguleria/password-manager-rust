@@ -1,0 +1,67 @@
+# Rust Compilation Output
+target/
+**/target/
+debug/
+release/
+
+# Cargo Package Manager
+Cargo.lock
+.cargo/
+
+# Rust Build Artifacts
+*.rmeta
+*.rlib
+*.d
+
+# Generated Binaries
+*.exe
+*.out
+*.app
+*.so
+*.dll
+*.dylib
+
+# Ignore Local Environment Variables
+.env
+.env.*
+.envrc
+
+# IDE and Editor Configurations
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.sublime-*
+
+# Logs and Debugging Files
+*.log
+*.tmp
+*.err
+*.test-result
+
+# Rust Documentation
+doc/
+
+# Temporary Files
+*.bak
+*.orig
+*.rej
+*.swp
+*.swo
+
+# Profiling Data
+*.gcda
+*.gcno
+*.profraw
+
+# Rust Fuzzing / Testing Directories
+fuzz/
+coverage/
+corpus/
+
+# Ignore Local Build Scripts
+scripts/
+*.sh~
