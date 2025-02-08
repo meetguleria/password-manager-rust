@@ -4,17 +4,18 @@ use rand::RngCore;
 use log::{info, error};
 use std::env;
 
-const KEY_ENV_VAR: &str = "AES_KEY";
+const KEY_ENV_VAR: &str = "ENCRYPTION_KEY";
 
 pub fn get_key() -> Result<[u8; 32], String> {
     match env::var(KEY_ENV_VAR) {
         Ok(key) => {
-            let key_bytes = key.as_bytes();
-            if key_bytes.len() != 32 {
-                return Err(format!("Invalid key length: expected 32 bytes, got {}", key_bytes.len()));
-            }
+            // Convert hex string to bytes
             let mut key_array = [0u8; 32];
-            key_array.copy_from_slice(key_bytes);
+            for i in 0..16 {
+                let byte = u8::from_str_radix(&key[i*2..i*2+2], 16)
+                    .map_err(|e| format!("Invalid hex in key: {}", e))?;
+                key_array[i] = byte;
+            }
             Ok(key_array)
         }
         Err(e) => Err(format!("Failed to load encryption key: {}", e)),

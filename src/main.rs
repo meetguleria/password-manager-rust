@@ -1,11 +1,15 @@
 use pm_lib::cli::commands;
 use pm_lib::application::password_manager;
+use dotenvy::dotenv;
 
 use clap::Command;
 use env_logger;
 use log::{info, error};
 
 fn main() {
+    // Initialize dotenv
+    dotenv().ok();
+
     env_logger::init();
 
     let matches = commands::build_cli().get_matches();
